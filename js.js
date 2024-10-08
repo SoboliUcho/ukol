@@ -177,6 +177,7 @@ function validate_product() {
     let products = document.getElementsByClassName("product");
     if (products.length < 1) {
         alert("Přidejte alespoň jeden produkt");
+        make_product(0);
         return false;
     }
     let correct = 0;
