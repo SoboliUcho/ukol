@@ -30,7 +30,7 @@ function get_curse($value)
 
         // convert value to NOK
         $value = ($value * $multiple) / $rate;
-        return $value . " kr ($name)";
+        return  round($value, 2). " kr ($name)";
     }
     // if NOK is not found, return random currency
     $random = rand(0, count($lines));
@@ -39,7 +39,7 @@ function get_curse($value)
     $multiple = $line[2];
     $rate = $line[4];
     $value = ($value * $multiple) / $rate;
-    return $value . " " . $name;
+    return round($value, 2) . " " . $name;
 }
 
 ?>
@@ -129,22 +129,22 @@ function get_curse($value)
                 $total_price = $product["total_price"];
             }
             echo "<div class='price'>
-                $price Kč / ks
+                ".round($price, 2). "Kč / ks
             </div>";
             echo "<div class='quantity'>
                 " . $product['quantity'] . " ks
             </div>";
             echo "<div class='total_price'>
-                $total_price Kč  bez DPH
+                ".round($total_price,2)." Kč  bez DPH
             </div>";
             echo "<div>
-                 " . $total_price * 1.21 . " Kč s DPH
+                 " . round($total_price * 1.21, 2). " Kč s DPH
             </div>";
             echo "</div>";
         }
         // print total price in CZK and in NOK
         echo '<div id="full_price_div">
-        Celková cena: <span id="full_price">' . $full_price . '</span> Kč
+        Celková cena: <span id="full_price">' . round($full_price, 2) . '</span> Kč
      </div>';
         echo '<div id="full_price_div">
         Celková cena: <span id="full_price">' . get_curse($full_price) . '</span>
@@ -258,7 +258,11 @@ function get_curse($value)
             let true_user = validate_user();
             // let true_user = false;
             let true_product = validate_product();
-            if (!true_user && !true_product) {
+            console.log(true_user);
+            console.log(true_product);
+            console.log(!(true_user && true_product));
+            if (!(true_user && true_product)) {
+                console.log("dont send");
                return;
             }
             let user = get_user();
