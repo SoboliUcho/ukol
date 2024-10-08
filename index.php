@@ -54,6 +54,7 @@ function get_curse($value)
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
     <script src="js.js"></script>
+    <link rel="icon" href="https://soboliucho.cz/img/icon.ico">
     <title>Ukol</title>
 </head>
 
